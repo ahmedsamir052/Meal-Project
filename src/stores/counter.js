@@ -1,12 +1,21 @@
 import { create } from "zustand";
 
-export const useMealStore = create((set) => ({
+interface MealStore {
+  meals: any[];
+  loading: boolean;
+  error: string | null;
+  searchTerm: string;
+  searchMeals: (query: string) => Promise<void>;
+  setMeals: (meals: any[]) => void;
+}
+
+export const useMealStore = create<MealStore>((set) => ({
   meals: [],
   loading: false,
   error: null,
   searchTerm: "",
 
-  searchMeals: async (query) => {
+  searchMeals: async (query: string) => {
     set({
       searchTerm: query,
       loading: true,
@@ -22,7 +31,7 @@ export const useMealStore = create((set) => ({
       set({
         meals: data.meals || [],
       });
-    } catch (err) {
+    } catch {
       set({
         error: "An error occurred during the search.",
       });

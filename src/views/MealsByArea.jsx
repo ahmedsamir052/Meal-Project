@@ -4,7 +4,7 @@ import { getMealsByArea } from "../services/api";
 
 export default function MealsByArea() {
   const [meals, setMeals] = useState([]);
-  const { name } = useParams(); // جاي من /area/:name
+  const { name } = useParams();
 
   useEffect(() => {
     async function fetchMeals() {
