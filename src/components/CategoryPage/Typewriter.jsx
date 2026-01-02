@@ -1,33 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Typewriter() {
-  const fullText = "Welcome! Choose a category to discover tasty recipes.";
-  const [displayText, setDisplayText] = useState("");
-  const indexRef = useRef(0);
-  const startedRef = useRef(false);
+  const fullText =
+    "Welcome! Choose a category to discover tasty recipes.";
+
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (startedRef.current) return;
-    startedRef.current = true;
+    const interval = setInterval(() => {
+      setIndex((prev) => {
+        if (prev >= fullText.length) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 100);
 
-    let timeoutId;
-
-    function typeWriter() {
-      if (indexRef.current < fullText.length) {
-        setDisplayText((prev) => prev + fullText[indexRef.current]);
-        indexRef.current++;
-        timeoutId = setTimeout(typeWriter, 100);
-      }
-    }
-
-    typeWriter();
-
-    return () => clearTimeout(timeoutId);
-  }, []);
+    return () => clearInterval(interval);
+  }, [fullText]);
 
   return (
     <h1 className="lg:text-4xl md:text-3xl sm:text-2xl text-yellow-500 font-semibold text-center lg:my-6 sm:my-4">
-      {displayText}
+      {fullText.slice(0, index)}
     </h1>
   );
 }
+
+
