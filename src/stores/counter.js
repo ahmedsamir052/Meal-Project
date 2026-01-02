@@ -1,21 +1,12 @@
 import { create } from "zustand";
 
-interface MealStore {
-  meals: any[];
-  loading: boolean;
-  error: string | null;
-  searchTerm: string;
-  searchMeals: (query: string) => Promise<void>;
-  setMeals: (meals: any[]) => void;
-}
-
-export const useMealStore = create<MealStore>((set) => ({
+export const useMealStore = create((set) => ({
   meals: [],
   loading: false,
   error: null,
   searchTerm: "",
 
-  searchMeals: async (query: string) => {
+  searchMeals: async (query) => {
     set({
       searchTerm: query,
       loading: true,
