@@ -16,7 +16,7 @@ export default function CategoryMeals() {
   }, [category]);
 
   return (
-    <div className="cards w-11/12 mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="cards w-11/12 mx-auto my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {meals.map((meal) => (
         <div
           className="card card group

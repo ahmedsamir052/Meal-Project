@@ -42,16 +42,7 @@ export default function MealDetails() {
   }
 
   return (
-    <div
-      className="
-  details
-  w-11/12 mx-auto mt-10
-  grid grid-cols-1
-  lg:grid-cols-[31%_68%]
-  gap-8
-  text-white
-"
-    >
+    <div className="details w-11/12 mx-auto mt-10 grid grid-cols-1 lg:grid-cols-[31%_68%] gap-8 text-white">
       <div className="lft-sec">
         <div className="img mb-3">
           <img
@@ -60,11 +51,13 @@ export default function MealDetails() {
             className="w-full rounded-lg"
           />
         </div>
-        <h1 className="text-3xl bg-black/60 backdrop-blur-sm py-2 text-amber-400">{meal.strMeal}</h1>
+        <h1 className="text-2xl lg:text-3xl bg-black/60 backdrop-blur-sm py-2 text-amber-400">
+          {meal.strMeal}
+        </h1>
       </div>
       <div className="rgh-sec space-y-6">
         <div className="instruct">
-          <h1 className="text-4xl text-amber-400 mb-2">Instructions</h1>
+          <h1 className="text-3xl lg:text-4xl text-amber-400 mb-2">Instructions</h1>
           <p className="leading-relaxed">{meal.strInstructions}</p>
         </div>
 
@@ -80,7 +73,7 @@ export default function MealDetails() {
 
         <div className="ingred">
           <h2 className="text-xl mb-2">Recipes:</h2>
-          <div className="ingredient grid grid-cols-4 gap-2">
+          <div className="ingredient grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
             {ingredients.map((ing, index) => (
               <div key={index} className="ing bg-black/50 p-2 rounded">
                 <span className="quantity text-yellow-400 mr-2">
@@ -92,7 +85,7 @@ export default function MealDetails() {
           </div>
         </div>
 
-        <div className="links flex gap-4">
+        <div className="links flex gap-4 pb-8">
           {meal.strYoutube && (
             <a
               href={meal.strYoutube}
